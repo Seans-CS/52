@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Leaderboard</title>
+    <style>
+        /* Add your styling here */
+        .leaderboard {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .user-card {
+            margin: 10px;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+        }
+
+        .user-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div>
+            <img src="iconforproject.png" alt="Your Logo" id="logo">
+        </div>
+        <nav>
+            <a href="index.html">Weekly Deck</a>
+            <a href="leaderboard.html">Leaderboard</a>
+        </nav>
+        <div>
+            <a href="testProfile.html" id="profile-btn">Profile</a>
+        </div>
+    </header>
+
+<div class="leaderboard" id="leaderboard">
+    <!-- Leaderboard content will be dynamically added here -->
+</div>
+<script>
+    // Sample data for demonstration purposes
+const usersData = [
+    { name: 'Dambian sheebl', image: '52/testPFP.png', shuffles: 420 },
+    { name: 'Seab Deabl', image: '52/testPFP.png', shuffles: 69 },
+    // Add more user data as needed
+];
+
+// Function to render the leaderboard
+function renderLeaderboard(users) {
+    const leaderboardElement = document.getElementById('leaderboard');
+    
+    // Clear previous content
+    leaderboardElement.innerHTML = '';
+
+    // Render each user card
+    users.forEach(user => {
+        const userCard = document.createElement('div');
+        userCard.classList.add('user-card');
+
+        // User image
+        const userImage = document.createElement('img');
+        userImage.src = user.image;
+        userImage.alt = 'Profile Picture';
+        userImage.classList.add('user-image');
+        userCard.appendChild(userImage);
+
+        // User details
+        const userDetails = document.createElement('div');
+        userDetails.innerHTML = `<strong>${user.name}</strong> - Shuffles: ${user.shuffles}`;
+        userCard.appendChild(userDetails);
+
+        // Append user card to the leaderboard
+        leaderboardElement.appendChild(userCard);
+    });
+}
+
+// Render the leaderboard with the sample data
+renderLeaderboard(usersData);
+</script>
+</body>
+</html>
